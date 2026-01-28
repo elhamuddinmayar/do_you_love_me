@@ -1,28 +1,26 @@
 const questionContainer = document.querySelector(".question-container");
-const resultContainer = document.querySelector(".result-container.yes");
+const resultContainer = document.querySelector(".result-container"); // Fixed selector
 const gifResult = document.querySelector(".gif-result");
-const heartLoader = document.querySelector(".cssload-main");
+const butterflyLoader = document.querySelector(".butterfly-loader"); // Changed from heart
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
 
-// /change the postion of no button
+// No button moves away
 noBtn.addEventListener("mouseover", () => {
   const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
   const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
-
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
 });
 
-// yes button functionality
-
+// Yes button - shows butterfly animation
 yesBtn.addEventListener("click", () => {
   questionContainer.style.display = "none";
-  heartLoader.style.display = "inherit";
+  butterflyLoader.style.display = "block"; // Changed from heartLoader
 
   const timeoutId = setTimeout(() => {
-    heartLoader.style.display = "none";
-    resultContainer.style.display = "inherit";
+    butterflyLoader.style.display = "none";
+    resultContainer.style.display = "block";
     gifResult.play();
-  }, 3000);
+  }, 3000); // Same 3 second timing
 });
